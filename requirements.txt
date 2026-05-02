@@ -1,0 +1,13 @@
+# Requirements for Deployment & Inference
+ultralytics
+opencv-python
+numpy
+onnxruntime
+streamlit
+Pillow
+
+# For Training/Pruning (Optional depending on environment)
+torch
+torchvision
+onnx
+onnxslim
