@@ -148,7 +148,7 @@ Processed output images and logs will automatically be saved to the `deployment/
 **Batch No. 9**
 - **Gaurav Chhajed (522261)** - [GauravChhajed](https://github.com/GauravChhajed)
 - **Jay Kishan (522136)** - [Jaysah02](https://github.com/Jaysah02)
-- **Abhishek Singh (522101)**
+- **Abhishek Singh (522101)** - [singhabhi137](https://github.com/singhabhi137)
 
 **Supervisor:**
 - [Dr. Sri Phani Krishna Karri](https://github.com/spkkarri)
