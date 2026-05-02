@@ -92,18 +92,15 @@ Before running the deployment scripts on the Jetson Nano, ensure your device is 
 
 ## Visual Results
 
-### Jetson Nano Setup
-![Jetson Setup](results/jetson_output/jetson3.jpeg)
+### Hardware Setup
+<p align="center">
+  <img src="deployment/setup.png" alt="Hardware Setup" width="80%">
+</p>
 
-### Sample Input vs Output
-**Input Image:**
-![Input Image](data/sample_images/input3.jpeg)
-
-**Before Pruning:**
-![Before Pruning](results/before_pruning/output3.png)
-
-**After Pruning:**
-![After Pruning](results/after_pruning/laptop3.png)
+### Sample Inference (Input vs Output)
+| Input Image | Jetson Nano Output |
+| :---: | :---: |
+| <img src="data/sample_images/input5.jpeg" alt="Input Image" width="400"> | <img src="results/jetson_output/jetson5.jpeg" alt="Jetson Output" width="400"> |
 
 ---
 
