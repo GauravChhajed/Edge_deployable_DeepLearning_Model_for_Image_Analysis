@@ -7,12 +7,31 @@ This repository contains the complete pipeline for an edge-deployable computer v
 
 ## Table of Contents
 - [Dataset](#dataset)
+- [System Architecture](#system-architecture)
 - [Repository Structure](#repository-structure)
 - [Execution Workflow & Environments](#execution-workflow--environments)
   - [Phase 1: Training & Optimization](#phase-1-training--optimization-environment-kaggle--google-colab)
   - [Phase 2: Edge Deployment](#phase-2-edge-deployment-environment-nvidia-jetson-nano--local-pc)
+- [Visual Results](#visual-results)
 - [How to Run Inference](#how-to-run-inference)
 - [Contributors](#contributors)
+- [License](#license)
+
+## System Architecture
+
+The pipeline follows a robust teacher-student knowledge distillation approach, combined with structural pruning and ONNX conversion to guarantee real-time performance on edge devices.
+
+```mermaid
+graph TD
+    A[IDID Dataset] -->|Train| B[Teacher Model<br>YOLOv8m]
+    B -->|Knowledge Distillation| C[Student Model<br>YOLOv8n]
+    C -->|Structural Pruning| D[Pruned Student Model]
+    D -->|Export| E[ONNX Format]
+    E -->|Deploy| F[Edge Inference<br>Nvidia Jetson Nano]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style F fill:#bbf,stroke:#333,stroke-width:2px
+```
 
 ## Dataset
 link : https://www.kaggle.com/competitions/insulator-defect-detection/data
@@ -71,6 +90,23 @@ Before running the deployment scripts on the Jetson Nano, ensure your device is 
 
 ---
 
+## Visual Results
+
+### Jetson Nano Setup
+![Jetson Setup](results/jetson_output/jetson3.jpeg)
+
+### Sample Input vs Output
+**Input Image:**
+![Input Image](data/sample_images/input3.jpeg)
+
+**Before Pruning:**
+![Before Pruning](results/before_pruning/output3.png)
+
+**After Pruning:**
+![After Pruning](results/after_pruning/laptop3.png)
+
+---
+
 ## 🛠️ How to Run Inference
 
 You can run the deployment scripts on a Jetson Nano or your Local PC (using CPU/GPU). 
@@ -122,3 +158,9 @@ Processed output images and logs will automatically be saved to the `deployment/
 ---
 
 **GitHub Repository:** [Edge_deployable_DeepLearning_Model_for_Image_Analysis](https://github.com/GauravChhajed/Edge_deployable_DeepLearning_Model_for_Image_Analysis)
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
