@@ -3,6 +3,7 @@
 This repository contains the complete pipeline for an edge-deployable computer vision model designed to analyze images and detect insulator defects. The model is trained to be lightweight and optimized, ensuring it runs efficiently on edge devices like the **Nvidia Jetson Nano**.
 
 ## Dataset
+link : https://www.kaggle.com/competitions/insulator-defect-detection/data
 
 The model was trained and evaluated on the **Insulator Defect Detection Dataset (IDID)**. The dataset consists of images categorized into three main classes:
 - `0: good`
