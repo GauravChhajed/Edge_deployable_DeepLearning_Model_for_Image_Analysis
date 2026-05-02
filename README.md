@@ -1,6 +1,8 @@
 # Edge Deployable Deep Learning Model For Image Analysis
 ### video link:
 https://drive.google.com/file/d/19oFZnLerR7BqzS7DQgBRUjD6ly3CpQe3/view?usp=sharing
+
+
 This repository contains the complete pipeline for an edge-deployable computer vision model designed to analyze images and detect insulator defects. The model is trained to be lightweight and optimized, ensuring it runs efficiently on edge devices like the **Nvidia Jetson Nano**.
 
 ## Dataset
