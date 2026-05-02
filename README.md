@@ -99,9 +99,9 @@ Processed output images and logs will automatically be saved to the `deployment/
 
 ## 👥 Contributors
 
-- **Gaurav Chhajed** - [GauravChhajed](https://github.com/GauravChhajed)
-- **Jay Sah** - [Jaysah02](https://github.com/Jaysah02)
-
+- **Gaurav Chhajed (522261)** - [GauravChhajed](https://github.com/GauravChhajed)
+- **Jay Kishan (522136)** - [Jaysah02](https://github.com/Jaysah02)
+- **Abhishek Singh (522101)**
 ---
 
 **GitHub Repository:** [Edge_deployable_DeepLearning_Model_for_Image_Analysis](https://github.com/GauravChhajed/Edge_deployable_DeepLearning_Model_for_Image_Analysis)
