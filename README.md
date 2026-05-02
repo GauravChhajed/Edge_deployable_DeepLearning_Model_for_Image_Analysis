@@ -5,7 +5,7 @@ This repository contains the complete pipeline for an edge-deployable computer v
 ## Dataset
 link : https://www.kaggle.com/competitions/insulator-defect-detection/data
 
-The model was trained and evaluated on the **Insulator Defect Detection Dataset (IDID)**. The dataset consists of images categorized into three main classes:
+The model was trained and evaluated on the **Insulator Defect Detection Dataset (IDID)** and **open source Internet Image**. The dataset consists of images categorized into three main classes:
 - `0: good`
 - `1: broken`
 - `2: flashover`
