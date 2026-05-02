@@ -5,6 +5,15 @@ https://drive.google.com/file/d/19oFZnLerR7BqzS7DQgBRUjD6ly3CpQe3/view?usp=shari
 
 This repository contains the complete pipeline for an edge-deployable computer vision model designed to analyze images and detect insulator defects. The model is trained to be lightweight and optimized, ensuring it runs efficiently on edge devices like the **Nvidia Jetson Nano**.
 
+## Table of Contents
+- [Dataset](#dataset)
+- [Repository Structure](#repository-structure)
+- [Execution Workflow & Environments](#execution-workflow--environments)
+  - [Phase 1: Training & Optimization](#phase-1-training--optimization-environment-kaggle--google-colab)
+  - [Phase 2: Edge Deployment](#phase-2-edge-deployment-environment-nvidia-jetson-nano--local-pc)
+- [How to Run Inference](#how-to-run-inference)
+- [Contributors](#contributors)
+
 ## Dataset
 link : https://www.kaggle.com/competitions/insulator-defect-detection/data
 
@@ -103,9 +112,13 @@ Processed output images and logs will automatically be saved to the `deployment/
 
 ## 👥 Contributors
 
+**Batch No. 9**
 - **Gaurav Chhajed (522261)** - [GauravChhajed](https://github.com/GauravChhajed)
 - **Jay Kishan (522136)** - [Jaysah02](https://github.com/Jaysah02)
 - **Abhishek Singh (522101)**
+
+**Supervisor:**
+- [Dr. Sri Phani Krishna Karri](https://github.com/spkkarri)
 ---
 
 **GitHub Repository:** [Edge_deployable_DeepLearning_Model_for_Image_Analysis](https://github.com/GauravChhajed/Edge_deployable_DeepLearning_Model_for_Image_Analysis)
