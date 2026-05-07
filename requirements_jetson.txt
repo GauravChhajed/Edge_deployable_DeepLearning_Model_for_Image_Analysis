@@ -1,0 +1,15 @@
+# Jetson Nano Deployment Requirements
+# ===================================
+# Note: On Nvidia Jetson Nano, you should ideally use the pre-installed JetPack components 
+# for OpenCV and TensorRT to ensure hardware acceleration.
+
+# 1. Install ONNX Runtime using the provided wheel for ARM64:
+# pip install deployment/onnxruntime_gpu-1.11.0-cp38-cp38-linux_aarch64.whl
+
+# 2. Install the rest of the lightweight dependencies:
+numpy>=1.19.5
+streamlit>=1.10.0
+Pillow>=8.0.0
+
+# Note: Do not install `opencv-python` via pip here, as it may overwrite 
+# the hardware-accelerated `cv2` module provided by Nvidia JetPack.

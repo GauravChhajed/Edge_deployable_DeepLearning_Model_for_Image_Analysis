@@ -30,7 +30,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # =========================
 @st.cache_resource
 def load_model():
-    model_path = 'best.onnx'
+    model_path = 'optimized_model.onnx'
     
     providers = [
         (

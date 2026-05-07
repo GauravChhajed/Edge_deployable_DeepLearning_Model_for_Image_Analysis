@@ -1,13 +1,13 @@
 # Requirements for Deployment & Inference
-ultralytics
-opencv-python
-numpy
-onnxruntime
-streamlit
-Pillow
+ultralytics==8.3.233
+opencv-python==4.10.0.84
+numpy==1.26.4
+onnxruntime==1.17.1
+streamlit==1.51.0
+Pillow==10.4.0
 
 # For Training/Pruning (Optional depending on environment)
-torch
-torchvision
-onnx
-onnxslim
+torch==2.8.0
+torchvision==0.23.0
+onnx==1.16.1
+onnxslim==0.1.91

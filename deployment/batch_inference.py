@@ -33,7 +33,7 @@ def main():
     # =========================
     print("Loading model onto GPU with TensorRT cache...")
 
-    model_path = 'best.onnx'
+    model_path = 'optimized_model.onnx'
     cache_dir = "./trt_cache"
 
     # Create cache folder

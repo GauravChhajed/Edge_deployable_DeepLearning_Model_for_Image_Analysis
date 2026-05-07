@@ -7,15 +7,29 @@ This repository contains the complete pipeline for an edge-deployable computer v
 
 ## Table of Contents
 - [Dataset](#dataset)
+- [Tech Stack](#tech-stack)
 - [System Architecture](#system-architecture)
 - [Repository Structure](#repository-structure)
 - [Execution Workflow & Environments](#execution-workflow--environments)
   - [Phase 1: Training & Optimization](#phase-1-training--optimization-environment-kaggle--google-colab)
   - [Phase 2: Edge Deployment](#phase-2-edge-deployment-environment-nvidia-jetson-nano--local-pc)
+- [Quantitative Results](#quantitative-results)
 - [Visual Results](#visual-results)
 - [How to Run Inference](#how-to-run-inference)
 - [Contributors](#contributors)
 - [License](#license)
+
+## Tech Stack
+
+- **Programming Language:** Python
+- **Deep Learning Frameworks:** PyTorch, YOLOv8
+- **Inference & Optimization:** ONNX Runtime, TensorRT
+- **Computer Vision:** OpenCV
+- **Web App UI:** Streamlit
+- **Edge Hardware:** NVIDIA Jetson Nano
+- **Training Environments:** Kaggle, Google Colab
+
+---
 
 ## System Architecture
 
@@ -48,8 +62,8 @@ The model was trained and evaluated on the **Insulator Defect Detection Dataset 
 │   └── sample_images/       # Sample images for testing the model
 ├── deployment/              # Edge deployment scripts (Jetson Nano/Local PC)
 │   ├── app.py               # Streamlit web UI for defect diagnosis
-│   ├── best.onnx            # Final optimized ONNX model
-│   ├── test2.py             # Batch image inference script
+│   ├── optimized_model.onnx            # Final optimized ONNX model
+│   ├── batch_inference.py             # Batch image inference script
 │   └── webcam_inference.py  # Real-time webcam inference script
 ├── docs/                    # Project reports and presentations
 ├── models/                  # PyTorch model weights (.pt)
@@ -77,16 +91,27 @@ All `.ipynb` files in the `training/` folder were executed on cloud platforms (K
 1. **`preprocessing_teacher.ipynb`**: Preprocesses the IDID dataset and trains the heavy baseline teacher model (`teacher_model.pt`).
 2. **`student_training.ipynb`**: Applies Knowledge Distillation to transfer knowledge from the heavy teacher to a lightweight student model (`student_model.pt`).
 3. **`pruning.ipynb`**: Structurally prunes the student model to reduce its parameter count and physical size while maintaining accuracy (`pruned_model.pt`).
-4. **`onnx_conversion.ipynb`**: Converts the final optimized PyTorch model to the ONNX format (`best.onnx`) for high-speed inference on edge devices.
+4. **`onnx_conversion.ipynb`**: Converts the final optimized PyTorch model to the ONNX format (`optimized_model.onnx`) for high-speed inference on edge devices.
 
 ### Phase 2: Edge Deployment (Environment: Nvidia Jetson Nano / Local PC)
-Once the `best.onnx` model was generated, it was transferred to the **Nvidia Jetson Nano** for real-time edge deployment.
+Once the `optimized_model.onnx` model was generated, it was transferred to the **Nvidia Jetson Nano** for real-time edge deployment.
 
 #### Jetson Nano Setup Requirements
 Before running the deployment scripts on the Jetson Nano, ensure your device is flashed with the appropriate NVIDIA JetPack SDK. 
 - [Official Nvidia Jetson Nano Developer Kit Setup Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit)
 
 > **Note:** The `deployment/` folder includes an `onnxruntime_gpu-1.11.0-cp38-cp38-linux_aarch64.whl` file, which is specifically required for enabling hardware-accelerated ONNX inference on the Jetson's ARM64 architecture.
+
+---
+
+## Quantitative Results
+
+| Model | Size | mAP50 | mAP50-95 | Device |
+| :--- | :--- | :--- | :--- | :--- |
+| YOLOv8m Teacher | 49.6 MB | 0.985 | 0.904 | GPU Kaggle T4 |
+| YOLOv8n Student | 6.0 MB | 0.986 | 0.860 | GPU Kaggle T4 |
+| Pruned Model | 4.8 MB | 0.943 | 0.779 | Kaggle GPU T4 |
+| ONNX Model | 9.4 MB | ~0.943 | ~0.779 | Jetson Nano |
 
 ---
 
@@ -109,10 +134,21 @@ Before running the deployment scripts on the Jetson Nano, ensure your device is 
 You can run the deployment scripts on a Jetson Nano or your Local PC (using CPU/GPU). 
 
 ### 1. Install Dependencies
+
+**For Local PC / Cloud Environment:**
 ```bash
 pip install -r requirements.txt
 ```
-*(If on Jetson Nano, install the provided ONNX Runtime `.whl` wheel manually: `pip install deployment/onnxruntime_gpu-1.11.0-cp38-cp38-linux_aarch64.whl`)*
+
+**For NVIDIA Jetson Nano:**
+```bash
+# 1. Install ONNX Runtime using the provided wheel for ARM64
+pip install deployment/onnxruntime_gpu-1.11.0-cp38-cp38-linux_aarch64.whl
+
+# 2. Install the lightweight Jetson dependencies
+pip install -r requirements_jetson.txt
+```
+> **Note:** We recommend using the JetPack pre-installed `cv2` (OpenCV) to ensure hardware acceleration is retained on the Jetson Nano.
 
 ### 2. Navigate and Activate Environment
 ```bash
@@ -124,7 +160,7 @@ source venv/bin/activate  # Or your appropriate virtual environment activation c
 
 - **Batch Image Processing** (Processes images from `data/sample_images/`):
   ```bash
-  python test2.py
+  python batch_inference.py
   ```
 
 - **Real-Time Webcam Processing**:

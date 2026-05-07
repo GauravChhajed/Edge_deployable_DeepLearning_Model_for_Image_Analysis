@@ -54,6 +54,6 @@ def convert_int64_to_int32(input_model_path, output_model_path):
     print(f"Successfully saved converted model to {output_model_path}")
 
 if __name__ == "__main__":
-    input_onnx = "best.onnx"
+    input_onnx = "optimized_model.onnx"
     output_onnx = "best_int32.onnx"
     convert_int64_to_int32(input_onnx, output_onnx)
